@@ -1,0 +1,69 @@
+<template>
+	<div class="recommend-content">
+		<text class="recommend-title">相似推荐</text>
+		<div>
+			<div for="{{list}}" class="recommend-box" onclick="detail($item)">
+				<image class="recommend-img" src="{{$item.icon}}"></image>
+				<text class="recommend-good-name">{{$item.title}}</text>
+				<div>
+					<text class="recommend-price">{{$item.price}}</text>
+					<text class="recommend-oldPrice">{{$item.oldPrice}}</text>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+.recommend-content {
+	flex-direction: column;
+	margin: 0px 0px 0px 33px;
+	padding-bottom: 41px;
+}
+
+.recommend-title {
+	margin: 24.3px 0px;
+	font-size: 31.3px;
+	color: #1a1a1a;
+}
+
+.recommend-box {
+	flex-direction: column;
+	width: 216.7px;
+	margin: 0px 16.3px 0px 0px;
+}
+
+.recommend-img {
+	border-radius: 8.3px;
+}
+
+.recommend-good-name {
+	margin: 14px 0px 4.7px 0px;
+	font-size: 27.1px;
+	color: #1a1a1a;
+}
+
+.recommend-price {
+	font-size: 20.8px;
+	color: #fa2a2d;
+	margin: 0px 10px 0px 0px;
+}
+
+.recommend-oldPrice {
+	color: #8d8d8d;
+	font-size: 20.8px;
+}
+</style>
+
+<script>
+import router from "@system.router";
+module.exports = {
+	props: ["list"],
+	detail: function(item) {
+		//进入商品详情页面
+		router.push({
+			uri: "Page_MallDetail"
+		});
+	}
+};
+</script>

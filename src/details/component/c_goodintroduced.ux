@@ -1,0 +1,41 @@
+<template>
+	<div class="goodintroduced-content">
+		<text class="goodintroduced-title">商品介绍</text>
+		<div for="{{list}}">
+			<text class="goodintroduced-name">{{$item.title}}</text>
+			<text class="goodintroduced-value">{{$item.value}}</text>
+		</div>
+	</div>
+</template>
+
+<style>
+.goodintroduced-content {
+	flex-direction: column;
+	margin: 26.4px 33px 0px 33px;
+}
+
+.goodintroduced-title {
+	margin: 0px 0px 26.4px 0px;
+	font-size: 31.3px;
+	color: #1a1a1a;
+}
+
+.goodintroduced-name {
+	width: 108.9px;
+	margin: 0px 33.3px 33.3px 0px;
+	font-size: 27.1px;
+	color: #1a1a1a;
+}
+
+.goodintroduced-value {
+	margin: 0px 0px 33.3px 0px;
+	font-size: 27.1px;
+	color: #1a1a1a;
+}
+</style>
+
+<script>
+module.exports = {
+	props: ["list"]
+};
+</script>

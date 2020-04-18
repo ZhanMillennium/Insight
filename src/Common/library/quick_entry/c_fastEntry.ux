@@ -1,0 +1,63 @@
+<template>
+	<div class="fastentry-content">
+		<div for="{{list}}" class="fastentry-box" onclick="detail($item.src)">
+			<div>
+				<image class="fastentry-img" src="{{$item.icon}}"></image>
+				<text class="fastentry-number" if="{{$item.number?true:false}}">{{$item.number}}</text>
+			</div>
+			<div>
+				<text class="fastentry-text">{{$item.title}}</text>
+				<text class="fastentry-tips" if="{{$item.isNew}}"></text>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+.fastentry-content {
+  padding: 16px 0px 0px 0px;
+}
+.fastentry-box {
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+
+.fastentry-number {
+  height: 26px;
+  margin: 0px 0px 0px -10px;
+  padding: 0px 5px;
+  font-size: 18.8px;
+  color: #ffffff;
+  border-radius: 12.5px;
+  background-color: #ff1400;
+}
+
+.fastentry-text {
+  padding-top: 17px;
+  color: #1a1a1a;
+  font-size: 25px;
+}
+
+.fastentry-img {
+  width: 84px;
+  height: 84px;
+}
+
+.fastentry-tips {
+  width: 17px;
+  height: 17px;
+  margin: 25px 0px 0px 12px;
+  border-radius: 17px;
+  background-color: #ff1400;
+}
+</style>
+
+<script>
+module.exports = {
+  props: ["list"],
+  detail(src) {
+    console.log(src);
+  }
+};
+</script>

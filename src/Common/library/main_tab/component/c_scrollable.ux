@@ -1,0 +1,103 @@
+<!-- 可滑动的主tab，注意和 不可滑动的主tab做区分
+  如果应用中没有使用到子tab，建议使用主tab组件。
+  此子tab作为样例，仅供参考
+  参数包含title和选中时颜色color
+ -->
+<template>
+  <div class="container">
+    <tabs onchange="changeTabactive">
+
+      <tab-content>
+        <block for="data.list">
+          <div class="item-container">
+            <!-- 此区域写tab标签对应的页面 -->
+            <text class="main-text">{{$item.title}}</text>
+          </div>
+        </block>
+      </tab-content>
+
+      <tab-bar class="tab_bar">
+        <block for="data.list">
+          <div class="tab-item">
+            <image src="{{$item.show?$item.pic_choice:$item.pic}}" />
+            <text style="color: {{$item.color}}" class="title">{{$item.title}}</text>
+          </div>
+        </block>
+      </tab-bar>
+
+    </tabs>
+  </div>
+</template>
+
+<style>
+  .tab_bar {
+    background-color: rgba(242, 242, 242, 0.95);
+  }
+
+  .tab-item {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 33px;
+    margin-right: 33px;
+    padding-top: 14px;
+    padding-bottom: 11px;
+    width: 170.8px;
+    height: 104.2px;
+  }
+
+  .tab-item image {
+    width: 50px;
+    height: 50px;
+    resize-mode: contain;
+    opacity: 0.5;
+  }
+
+  .tab-item image:active {
+    width: 50px;
+    height: 50px;
+    resize-mode: contain;
+  }
+
+  .tab-item text {
+    font-size: 20.8px;
+    margin-top: 10px;
+    font-weight: 500;
+    opacity: 0.5;
+  }
+
+  .tab-item text :active {
+    font-size: 20.8px;
+    margin-top: 10px;
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  .item-container {
+    justify-content: center;
+  }
+
+  .main-text {
+    font-size: 100px;
+    color: #5f9ea0;
+  }
+</style>
+
+<script>
+  module.exports = {
+    props: [
+      "data"
+    ],
+    changeTabactive: function (e) {
+      for (let i = 0; i < this.data.list.length; i++) {
+        let element = this.data.list[i];
+        element.show = false;
+        element.color = this.data.color_normal;
+        if (i === e.index) {
+          element.show = true;
+          element.color = this.data.color_active;
+          this.$page.setTitleBar({ text: element.title, menu: false });
+        }
+      }
+    }
+  }
+</script>

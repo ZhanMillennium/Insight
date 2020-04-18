@@ -1,0 +1,122 @@
+<template>
+	<div class="malldetail-flex-h">
+		<!-- 首页滑动banner -->
+		<div class="malldetail-flex-h">
+			<swiper autoplay="true" class="swiper" interval="{{sliderValue}}" indicator="{{indicator}}" loop="{{isLoop}}" onchange="change">
+				<div for="{{data.goodImgList}}">
+					<image class="image" src="{{$item.url}}"></image>
+				</div>
+			</swiper>
+		</div>
+		<div>
+			<text class="malldetail-price">￥{{data.goodPrice}}</text>
+			<text class="malldetail-oldPrice">单买价￥{{data.goodOldPrice}}</text>
+		</div>
+		<text class="malldetail-good-name">{{data.goodName}}</text>
+		<div class="malldetail-black"></div>
+		<div class="malldetail-free">
+			<text class="malldetail-free-title">优惠券</text>
+			<text class="malldetail-free-detail">{{data.goodFree}}</text>
+			<text class="malldetail-free-btn" onclick="getFree">领取</text>
+			<image class="malldetail-free-img" onclick="getFree" src="../img/arrow.png"></image>
+		</div>
+		<text class="malldetail-free-tips">{{data.goodFreeDetail}}</text>
+		<div class="malldetail-black"></div>
+	</div>
+</template>
+
+<style>
+.malldetail-flex-h {
+	flex-direction: column;
+}
+.swiper {
+	width:750px;
+	height:750px;
+	flex-direction: column;
+	indicator-selected-color: rgba(255, 255, 255, 1);
+	indicator-color: rgba(255, 255, 255, 0.5);
+	indicator-size: 12.5px;
+}
+
+.image {
+	width: 750px;
+	height: 750px;
+}
+
+.malldetail-price {
+	margin: 33.3px 10px 0px 33px;
+	color: #fa2a2d;
+	font-size: 37.5px;
+}
+
+.malldetail-oldPrice {
+	margin: 45px 0px 0px 0px;
+	color: #808080;
+	text-decoration: line-through;
+	font-size: 20.8px;
+}
+
+.malldetail-good-name {
+	margin: 19.8px 33px 33.9px 33px;
+	color: #1a1a1a;
+	font-size: 37.5px;
+}
+
+.malldetail-black {
+	height: 17px;
+	background-color: #f2f2f2;
+}
+
+.malldetail-free {
+	margin: 0px 33px;
+	padding: 29.2px 0px;
+	align-items: center;
+	border-color: #cccccc;
+	border-bottom-width: 0.5px;
+}
+
+.malldetail-free-title {
+	padding: 0px 10px;
+	margin: 0px 16.7px 0px 0px;
+	color: #ff7500;
+	border-radius: 4.2px;
+	border: 1px solid #ff7500;
+	font-size: 20.8px;
+}
+
+.malldetail-free-detail {
+	flex: 1;
+	color: #1a1a1a;
+	font-size: 31.3px;
+}
+
+.malldetail-free-btn {
+	padding: 0px 9px 0px 0px;
+	font-size: 27.1px;
+	color: #808080;
+}
+
+.malldetail-free-img {
+	width: 16px;
+	height: 28px;
+}
+
+.malldetail-free-tips {
+	margin: 29.2px 33px;
+	font-size: 31.3px;
+	color: #1a1a1a;
+}
+</style>
+
+<script>
+module.exports = {
+	props: ['data'],
+    //领取优惠卷
+	getFree: function() {
+		console.log("领取优惠券");
+	},
+	change(){
+		console.debug("change!!!");
+	}
+}
+</script>

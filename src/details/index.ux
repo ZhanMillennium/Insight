@@ -1,0 +1,319 @@
+<import name="comments" src="./component/c_comments"></import>
+
+<template>
+	<!-- template里只能有一个根节点 -->
+	<div class="container">
+		<div class="bannerImg">
+			<swiper class="swiperContent" autoplay="true">
+				<div class="imgSetting"></div>
+				<div class="imgSetting"></div>
+				<div class="imgSetting"></div>
+			</swiper>
+		</div>
+		<div class="mainTitle mainContent">
+			<div class="sightTitle">
+				<div class="leftsightTitle">
+					<text class="topMainTitle">{{product.title}}</text>
+					<text class="centersightTitle">{{product.subtitle}}</text>
+				</div>
+					<image id="nav" src="/Common/导航.png" alt="导航"></image>
+			</div>
+
+			<div class="distanceQty">
+				<div>
+					<text class="distance">
+						{{product.distance}}
+					</text>
+				</div>
+			</div>
+
+			<div class="lineSep"></div>
+			<div class="sightMainAdvanced">
+				<div class="advancedTitleCon" for="product.advancedTitle">
+					<text class="advancedTitle">{{$item.name}}</text>
+				</div>
+			</div>
+		</div>
+		<div class="divSep "></div>
+
+		<comments data="{{comment}}"></comments>
+
+		<div class="mainDetail mainContent">
+			<div class="detailTitle">
+				<text class="titleDetailText">{{product.detailname}}</text>
+			</div>
+			<div class="mainDetail" for="{{product.sightDetail}}">
+				<div class="groupCon">
+					<text class="leftColumn">{{$item.name}}</text>
+					<text class="rightColumn">{{$item.detail}}</text>
+
+				</div>
+				<div class="lineSep "></div>
+			</div>
+		</div>
+		<div class="tab">
+         <div class="tab-item">
+           <image src="/Common/album.png"  onclick="getAlbum()"></image>
+         </div>
+         <div id="camera">
+           <image src="/Common/+.png" onclick="takePhoto()"></image>
+         </div>
+         <div class="tab-item"  onclick="navigateTofoot()">
+             <image src="/Common/clock.png" ></image>
+         </div>
+       </div>
+	</div>
+</template>
+
+<style>
+	.bannerImg {
+		margin-bottom: 33px;
+	}
+
+	.groupCon {
+		color: #1A1A1A;
+		opacity: 0.5;
+		font-size: 20.8px;
+		padding-bottom: 16px;
+	}
+
+	.leftColumn {
+		width: 159.8px;
+	}
+
+	.mainDetail {
+		flex-direction: column;
+	}
+
+	.detailTitle {
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.titleDetailText {
+		font-size: 27.1px;
+		color: #1A1A1A;
+		opacity: 0.5;
+		margin-bottom: 50px;
+	}
+
+	.divSep {
+		height: 17px;
+		width: 100%;
+		background-color: #F5F5F5;
+		margin-bottom: 31px;
+	}
+
+	.sightMainAdvanced {
+		height: 62px;
+		width: 100%;
+		margin-bottom: 16px;
+	}
+
+	.advancedTitleCon {
+		margin-right: 16px;
+	}
+
+	.advancedTitle {
+		font-size: 20.8px;
+		color: #1A1A1A;
+		opacity: 0.4;
+		border: 1.6px solid #B3B3B3;
+		border-radius: 5.2px;
+		padding-left: 14px;
+		padding-right: 14px;
+		height: 38px;
+		margin-top: 5px;
+	}
+
+	.lineSep {
+		/* border: 1px solid #000000;
+		opacity: 0.2;
+		height: 1px;
+		width: 100%;
+		color: #000000; */
+		border-bottom-width: 0.5px;
+		border-color: rgba(0, 0, 0, 0.2);
+		margin-bottom: 17px;
+	}
+
+	.textAlign {}
+
+	.calImg {
+		width: 49px;
+		height: 50px;
+		background-size: 17px;
+		background-repeat: no-repeat;
+		background-position: center;
+		padding: 15px;
+	}
+
+	.mainTitle {
+		flex-direction: column;
+	}
+
+	.distance {
+		font-size: 46.9px;
+		color: #FF742E;
+		margin-right: 17px;
+	}
+
+	.countTitleDiv {
+		width: 100px;
+		padding: 0 29px;
+	}
+
+	.countTitle {
+		font-size: 37.5px;
+		color: #FF742E;
+	}
+
+	.bottomsightTitle {
+		font-size: 20.8px;
+		opacity: 0.3;
+		color: #1A1A1A;
+	}
+
+	.centersightTitle {
+		font-size: 27.1px;
+		opacity: 0.5;
+		margin-bottom: 13px;
+		color: #1A1A1A;
+	}
+
+	.topMainTitle {
+		font-size: 45px;
+		margin-bottom: 12px;
+		color: #1A1A1A;
+	}
+
+	.sightTitle {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+
+	.imgSetting {
+		background-position: bottom;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-image: url(/Common/BGview.jpeg);
+		width: 100%;
+		height: 750px;
+	}
+
+	.swiperContent {
+		width: 750px;
+		height: 750px;
+		indicator-selected-color:rgba(173, 173, 173, 1);
+    indicator-color:rgba(173, 173, 173, 0.5);
+    indicator-size:8px;
+	}
+
+	.mainContent {
+		padding-left: 33px;
+		padding-right: 33px;
+	}
+
+	.container {
+		flex-direction: column;
+		width: 750px;
+	}
+
+	.tab{
+    background-color: #ffffff;
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    bottom: 0px;
+  }
+
+  .tab-item{
+    width: 225px;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .tab-item image{
+    height: 80px;
+    position:absolute;
+    margin-top:35px;
+  }
+  
+  #camera{
+    width: 300px;
+    height: 100px;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  #nav{
+	  right: 10px;
+	  height: 50px;
+  }
+
+</style>
+
+<script>
+	import router from "@system.router"
+	import media from '@system.media'
+
+	module.exports = {
+		data: {
+			title: 'World!',
+			count: 1,
+			//景点基本信息
+			product: {
+				title: '宽窄巷子',	//景点名称
+				subtitle: '成都',	//城市
+				distance: '5.6Km',	//景点距离
+				detailname: '-景点详情-',	//“景点详情”title 
+				//景点额外信息
+				advancedTitle: [{
+					name: "成都最多人游"
+				}, {
+					name: "最快半小时达"
+				}],
+			},
+			comment: {
+				//评论关键字列表
+				keywordList: ["美食", "休闲", "古色古香"],
+				//评论详情列表
+				detail: [{
+					userName: "Jiaqi",//用户评论名称
+					userIcon: "./img/user.png",//用户评论头像
+					commentsText: "美食很多，适合平时休闲。装修古色古香。",//用户评论文字
+					commentsImg: "./img/sight.jpg"//用户评论图片
+				}]
+			},
+		},
+		
+		goBack() {
+			router.back();
+		},
+		onInit() {
+		},
+		navigateTofoot() {
+      router.push({
+        uri:'footmark'
+    	  })
+		},
+
+		takePhoto(){
+      media.takePhoto({
+    success: function (data) {
+    console.log(`handling success: ${data.uri}`)
+        }   
+      })
+    },
+
+    getAlbum(){
+      media.pickImage({
+      success: function (data) {
+      console.log(`handling success: ${data.uri}`)
+       }
+	 })
+	}
+	}
+</script>

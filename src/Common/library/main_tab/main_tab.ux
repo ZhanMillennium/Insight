@@ -1,0 +1,32 @@
+<!-- 
+  参数：每个item包含：图片路径img，标题。以及对应的选中时的
+  图片img和标题颜色，参照下面的写法
+  主tab注意和固定主tab区分（固定主tab不支持滑动）
+ -->
+<!-- 不可滑动主tab -->
+<import name="fixedmaintab" src="./component/c_fixed"></import>
+<!-- 可滑动 主tab -->
+<import name="scrollablemaintab" src="./component/c_scrollable"></import>
+<template>
+  <div>
+    <fixedmaintab if="{{isFixedMainTab}}" data="{{data}}"></fixedmaintab>
+    <!-- <scrollablemaintab if="{{!isFixedMainTab}}" data="{{data}}"></scrollablemaintab> -->
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      isFixedMainTab: true,
+      data: {
+        color_normal: '#ffffff',
+        color_active: '#ffffff',
+        list: [
+          { i: 0, color: '#ffffff', pic: '/Common/album.png', pic_choice: 'component/Component_MainTab/img/home_cho.png', show: false },
+          { i: 1, color: '#ffffff', pic: '/Common/+.png', pic_choice: 'component/Component_MainTab/img/classification_cho.png', show: false },
+          { i: 2, color: '#ffffff', pic: '/Common/clock.png', pic_choice: 'component/Component_MainTab/img/shoppingCart_cho.png', show: false },
+        ]
+      }
+    }
+  }
+</script>

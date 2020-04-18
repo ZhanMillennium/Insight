@@ -1,0 +1,55 @@
+{
+  "package": "org.jotang1insight.app",
+  "name": "Insight",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "icon": "/Common/logo.png",
+  "minPlatformVersion": 1060,
+  "features": [
+    {
+      "name": "system.configuration"
+    },
+    {
+      "name": "system.calendar"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.shortcut"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {},
+  "router": {
+    "entry": "Hello",
+    "pages": {
+      "Hello": {
+        "component": "hello"
+      },
+      "footmark": {
+        "component": "footprint",
+        "path": "/footmark"
+      },
+      "details": {
+        "component": "index",
+        "path": "/details"
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#ffb400",
+    "titleBarText": "Insight识景",
+    "titleBarTextColor": "#ffffff",
+    "pages": {
+      "Hello": {}
+    }
+  }
+}

@@ -1,0 +1,134 @@
+<template>
+	<div class="specfic-content">
+		<text class="specfic-title">规格</text>
+		<div>
+			<text for="{{data.specfic}}" class="{{$item.select?'specfic-item-active':'specfic-item'}}" onclick="specficFun($idx)">{{$item.value}}</text>
+		</div>
+		<text class="specfic-title">尺寸</text>
+		<div>
+			<text for="{{data.size}}" class="{{$item.select?'specfic-item-active':'specfic-item'}}" onclick="sizeFun($idx)">{{$item.value}}</text>
+		</div>
+		<text class="specfic-title">购买数量</text>
+		<div class="specfic-buy-box">
+			<div class="specfic-buy-item" onclick="reduce">
+				<image if="{{buyNumber===1}}" class="specfic-img-reduce" src="../img/icon_reduce.png"></image>
+				<image else class="specfic-img-reduce" src="../img/icon_reduce_black.png"></image>
+			</div>
+			<div class="specfic-middle">
+				<text class="specfic-number">{{buyNumber}}</text>
+			</div>
+			<div class="specfic-buy-item" onclick="add">
+				<image class="specfic-img" src="../img/icon_add.png"></image>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+	.specfic-content {
+		margin: 24.1px 33px 33.3px 33px;
+		flex-direction: column;
+	}
+
+	.specfic-title {
+		font-size: 31.3px;
+		color: #1a1a1a;
+	}
+
+	.specfic-item {
+		width: 148px;
+		text-align: center;
+		padding: 8.5px 0px;
+		margin: 24.2px 16.7px 41px 0px;
+		font-size: 25px;
+		color: #1a1a1a;
+		border-radius: 8.3px;
+		background-color: #f2f2f2;
+	}
+
+	.specfic-item-active {
+		width: 148px;
+		text-align: center;
+		padding: 7.5px 0px;
+		margin: 24.2px 16.7px 41px 0px;
+		font-size: 25px;
+		color: #ff7500;
+		border: 1px solid #ff7500;
+		border-radius: 8.3px;
+	}
+
+	.specfic-buy-box {
+		width: 200px;
+		height: 66.7px;
+		margin: 24.3px 0px 0px 0px;
+		border: 1px solid #cccccc;
+		border-radius: 8.3px;
+		align-items: center;
+	}
+
+	.specfic-img-reduce {
+		width: 25px;
+		height: 4px;
+		margin: 0px 19px;
+	}
+
+	.specfic-img {
+		width: 25px;
+		height: 25px;
+		margin: 0px 19px;
+	}
+
+	.specfic-middle {
+		width: 66.7px;
+		height: 66.7px;
+		border-color: #cccccc;
+		border-left-width: 1px;
+		border-right-width: 1px;
+	}
+
+	.specfic-number {
+		width: 100%;
+		text-align: center;
+		font-size: 31.3px;
+		color: #1a1a1a;
+	}
+
+	.specfic-buy-item {
+		width: 63px;
+		height: 66.7px;
+		align-items: center;
+	}
+</style>
+
+<script>
+	module.exports = {
+		props: ["data"],
+		data: {
+			buyNumber: 1
+		},
+		//选择规格
+		specficFun: function (index) {
+			for (var i = 0; i < this.data.specfic.length; i++) {
+				this.data.specfic[i].select = false;
+			}
+			this.data.specfic[index].select = true;
+		},
+		//选择尺寸
+		sizeFun: function (index) {
+			for (var i = 0; i < this.data.size.length; i++) {
+				this.data.size[i].select = false;
+			}
+			this.data.size[index].select = true;
+		},
+		//减少购买数量
+		reduce: function () {
+			if (this.buyNumber > 1) {
+				this.buyNumber = this.buyNumber - 1;
+			}
+		},
+		//增加购买数量
+		add: function () {
+			this.buyNumber = this.buyNumber + 1;
+		}
+	};
+</script>

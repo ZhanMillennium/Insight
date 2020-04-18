@@ -1,0 +1,117 @@
+<template>
+	<div class="comments-content">
+		<div class="comments-header">
+			<text class="comments-title">评论</text>
+			<text onclick="more" class="comments-more">更多</text>
+			<image onclick="more" src="../img/arrow.png"></image>
+		</div>
+		<text class="comments-person-title">去过该景点的用户认为</text>
+		<div>
+			<text for="{{data.keywordList}}" class="comments-item-active">{{$item}}</text>
+		</div>
+		<div class="comments-detail-box" for="{{data.detail}}">
+			<div class="comments-detail-person">
+				<image class="comments-person-img" src="{{$item.userIcon}}"></image>
+				<text class="comments-name">{{$item.userName}}</text>
+			</div>
+			<div class="comments-detail-wrap">
+				<text class="comments-detail">{{$item.commentsText}}</text>
+				<image class="comments-detail-img" src="{{$item.commentsImg}}"></image>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+	.comments-content {
+		flex-direction: column;
+		margin: 0px 33px;
+		padding-bottom: 33.3px;
+	}
+
+	.comments-header {
+		padding: 24.2px 0px;
+		align-items: center;
+	}
+
+	.comments-title {
+		flex: 1;
+		font-size: 31.3px;
+		color: #1a1a1a;
+	}
+
+	.comments-more {
+		padding: 0px 9px 0px 0px;
+		font-size: 27.1px;
+		color: #808080;
+	}
+
+	.comments-header image {
+		height: 16px;
+		height: 28px;
+	}
+
+	.comments-person-title {
+		color: #1a1a1a;
+		font-size: 27.1px;
+	}
+
+	.comments-item-active {
+		padding: 0px 15px;
+		margin: 14.6px 16.7px 16.7px 0px;
+		font-size: 20.8px;
+		color: #ff7500;
+		border: 1px solid #ff7500;
+		border-radius: 8.3px;
+	}
+
+	.comments-detail-box {
+		flex-direction: column;
+		background-color: #f3f3f3;
+		border-radius: 8.3px;
+	}
+
+	.comments-detail-person {
+		align-items: center;
+		margin: 36px 0px 18px 33.3px;
+	}
+
+	.comments-person-img {
+		width: 83.3px;
+		height: 83.3px;
+		border-radius: 83.3px;
+	}
+
+	.comments-name {
+		margin: 0px 0px 0px 16.7px;
+		color: #1a1a1a;
+		font-size: 31.3px;
+	}
+
+	.comments-detail-wrap {
+		margin: 0px 33.3px 33.3px 33.3px;
+	}
+
+	.comments-detail {
+		flex: 1;
+		margin-right: 16.7px;
+		color: #1a1a1a;
+		font-size: 27.1px;
+	}
+
+	.comments-detail-img {
+		width: 133.3px;
+		height: 133.3px;
+		border-radius: 8.3px;
+	}
+</style>
+
+<script>
+	module.exports = {
+		props: ["data"],
+		more: function () {
+			//进入更多评论页面
+			console.log("更多评论");
+		}
+	};
+</script>

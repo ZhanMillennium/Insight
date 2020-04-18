@@ -1,0 +1,113 @@
+<!-- 固定主tab和有滑动功能的子tab一起使用
+  如果应用中没有使用到子tab，建议使用主tab组件。
+  此子tab作为样例，仅供参考
+  参数包含title和选中时颜色color
+ -->
+<template>
+  <div class="container">
+
+    <block for="data.list">
+      <div show="{{$item.show}}" class="tab-content">
+        <text>{{$item.title}}</text>
+      </div>
+    </block>
+
+    <tabs onchange="switchContent" class="tabs">
+      <tab-bar>
+        <block for="data.list">
+          <div class="tab-item">
+            <image if="{{$item.show}}" class="image-active" src="{{$item.show?$item.pic_choice:$item.pic}}" />
+            <image else class="image-normal" src="{{$item.show?$item.pic_choice:$item.pic}}" />
+            <text style="color: {{$item.color}}" class="title">{{$item.title}}</text>
+          </div>
+        </block>
+      </tab-bar>
+    </tabs>
+
+  </div>
+
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .tabs {
+    background-color: #faebd7;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+  }
+
+  .tab-item {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 33px;
+    margin-right: 33px;
+    padding-top: 14px;
+    padding-bottom: 11px;
+    width: 170.8px;
+    height: 104.2px;
+  }
+
+  .image-active {
+    width: 50px;
+    height: 50px;
+    resize-mode: contain;
+  }
+
+  .image-normal {
+    width: 50px;
+    height: 50px;
+    resize-mode: contain;
+    opacity: 0.5;
+  }
+
+  .tab-item text {
+    font-size: 21px;
+    margin-top: 6px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .tab-item text:active {
+    font-size: 21px;
+    color: #ff0000;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .tab-content {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 1000px;
+  }
+
+  .tab-content text {
+    width: 100%;
+    text-align: center;
+  }
+</style>
+
+<script>
+  module.exports = {
+    props: [
+      'data'
+    ],
+    switchContent: function (e) {
+      let index = e.index;
+      for (let i = 0; i < this.data.list.length; i++) {
+        let element = this.data.list[i];
+        element.show = false;
+        if (i === index) {
+          element.show = true;
+          this.$page.setTitleBar({ text: element.title, menu: false });
+        }
+      }
+    }
+  }
+</script>

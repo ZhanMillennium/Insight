@@ -1,0 +1,52 @@
+//快捷入口组件调用示范
+<import name="fastentry" src="./c_fastEntry"></import>
+<template>
+	<div class="container">
+		<fastentry list="{{fastentrylist}}"></fastentry>
+	</div>
+</template>
+<style>
+.container {
+  flex-direction: column;
+}
+</style>
+
+<script>
+module.exports = {
+  data: {
+    fastentrylist: [
+      {
+        icon: "component/Component_FastEntry/img/sign.png",
+        title: "签到",
+        src: "sign",
+        isNew: false
+      },
+      {
+        icon: "component/Component_FastEntry//img/recharge.png",
+        title: "充值",
+        src: "recharge",
+        isNew: false
+      },
+      {
+        icon: "component/Component_FastEntry//img/gift.png",
+        title: "礼品",
+        src: "gift",
+        isNew: false
+      },
+      {
+        icon: "component/Component_FastEntry//img/activity.png",
+        title: "活动",
+        src: "activities",
+        isNew: true
+      },
+      {
+        icon: "component/Component_FastEntry//img/news.png",
+        title: "消息",
+        number: 21,
+        src: "news",
+        isNew: false
+      }
+    ]
+  }
+};
+</script>
